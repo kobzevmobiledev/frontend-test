@@ -88,7 +88,7 @@ export class ProductViewPageComponent implements OnInit {
     }
 
     navBack() {
-        this.location.back()
+        this.router.navigate(['/products']);
     }
 
 }
