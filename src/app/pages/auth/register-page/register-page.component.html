@@ -1,0 +1,38 @@
+<div class="auth-content">
+    <div class="panel">
+        <div class="panel-body">
+            <h2 class="text-center">Sign up</h2>
+            <p class="auth-title mb-4 text-center">Sign up to get access</p>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="username">
+                    <!--Errors-->
+                    <mat-error *ngIf="form.controls['username'].hasError('username') && !form.controls['username'].hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="form.controls['username'].hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    <!--Errors-->
+                    <mat-error *ngIf="form.controls['password'].hasError('minlength') && !form.controls['password'].hasError('required')">
+                        Required min 6 symbols
+                    </mat-error>
+                    <mat-error *ngIf="form.controls['password'].hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div class="form-field">
+                    <button mat-flat-button color="primary" class="auth-submit-btn" [disabled]="form.invalid || form.disabled">Register</button>
+                </div>
+                <div class="form-field pb-0 mt-3">
+                    <p class="text-center mb-0">Have account already? Please go to <a [routerLink]="'/login'">Sign In page</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

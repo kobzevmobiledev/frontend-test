@@ -1,0 +1,85 @@
+// Utils
+@import 'scss/grid';
+
+// Theme
+html{
+    height: 100%;
+    font-size: 62.5%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding-top:90px;
+    font-size:1.6rem;
+}
+
+// Typography
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+}
+.h2, h2 {
+    font-size: 2rem;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+}
+.h4, h4 {
+    font-size: 1.5rem;
+}
+.h5, h5 {
+    font-size: 1.25rem;
+}
+.h6, h6 {
+    font-size: 1rem;
+}
+
+// Forms
+.mat-form-field{
+    &.full-width{
+        display:block;
+    }
+}
+
+.mat-form-field-ripple {
+    background-color: #d4ebf3;
+}
+
+.mat-form-field-appearance-fill{
+    .mat-form-field-flex {
+        background-color: #f5f8f9;
+    }
+    .mat-form-field-underline::before {
+        background-color: #e4eaec;
+    }
+    .mat-form-field-ripple {
+        bottom: 0;
+        height: 1px !important;
+    }
+}
+.form-field{
+     padding-bottom: 18.8px;
+ }
+
+// Authentication
+.auth-title{
+    color: #a3afb7;
+    font-size:1.4rem;
+    font-weight:300;
+}
+.auth-content{
+    margin: 80px auto 0 auto;
+    max-width: 440px;
+    width:100%;
+    .auth-submit-btn{
+        width:100%;
+    }
+}

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let product of products">
+            <mat-card class="product-item-card">
+                <div class="product-item-img-wrapper">
+                    <img mat-card-image src="{{product.img.indexOf('http') != -1 ? product.img : 'https://via.placeholder.com/350'}}"
+                         alt="{{product.title}}" (click)="showProduct(product)">
+                </div>
+
+                <mat-card-content>
+                    <h3>{{product.title}}</h3>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-stroked-button color="primary" (click)="showProduct(product)">View more</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<app-loader *ngIf="!products || !products.length"></app-loader>

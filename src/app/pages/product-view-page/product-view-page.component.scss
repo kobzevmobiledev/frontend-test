@@ -1,0 +1,49 @@
+.image-card{
+    padding:0;
+    img{
+        width:100%;
+        margin:0 0 30px 0;
+    }
+}
+
+.product-info{
+    margin-top:15px;
+}
+
+.rate-icon{
+    color:#ffd740;
+    &:active{
+        color:#ffd740;
+    }
+}
+
+.reviews-list{
+    margin-top:30px;
+}
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option{
+    height:auto;
+}
+.review-list-item{
+    padding: 15px;
+    .review-meta{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        h3{
+            font-weight:400;
+            color:#a3afb7;
+            margin:0
+        }
+    }
+    .review-rate{
+        text-align: right;
+    }
+}
+
+.back-button {
+    padding: 0 !important;
+}
+

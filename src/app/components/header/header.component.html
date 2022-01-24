@@ -1,0 +1,6 @@
+<nav class="navbar">
+    <a class="navbar-brand">Company LOGO</a>
+    <a class="button" *ngIf="!authService.isAuth()" [routerLink]="'/login'">Login</a>
+    <a class="button">{{!authService.isAuth() ? 'Guest' : this.authService.getUser().username}}</a>
+    <a class="button" *ngIf="authService.isAuth()" (click)="logout()">Logout</a>
+</nav>

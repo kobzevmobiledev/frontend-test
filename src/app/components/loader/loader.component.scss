@@ -1,0 +1,69 @@
+:host{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+}
+
+.spinner {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    svg {
+        animation: rotator 2400ms linear infinite;
+    }
+    circle {
+        fill: none;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-dasharray: 145px;
+        transform-origin: center;
+        animation: dash 2400ms ease-in-out infinite, colors calc(2400ms*4) ease-in-out infinite;
+    }
+}
+
+@keyframes colors {
+    0% {
+        stroke: #3f51b5;
+    }
+    25% {
+        stroke: #DE3E35;
+    }
+    50% {
+        stroke: #F7C223;
+    }
+    75% {
+        stroke: #1B9A59;
+    }
+    100% {
+        stroke: #3f51b5;
+    }
+}
+
+@keyframes rotator {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 145;
+    }
+    50% {
+        stroke-dashoffset: 20;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 145;
+        transform: rotate(450deg);
+    }
+}

@@ -1,0 +1,61 @@
+<div class="auth-content">
+    <div class="panel">
+        <div class="panel-body">
+            <h3>Sign into catalog or <small class="auth-title">(Register to have more functions!)</small></h3>
+            <form [formGroup]="form" class="card" (ngSubmit)="onSubmit()">
+                <!-- Email field -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="username">
+                    <mat-error
+                        *ngIf="form.controls['username'].hasError('username') && !form.controls['username'].hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="form.controls['username'].hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password field -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                        <mat-error class="pink-text" *ngIf="form.controls['password'].hasError('required')">Password is
+                            required.
+                        </mat-error>
+                        <mat-error class="pink-text" *ngIf="form.controls['password'].hasError('minlength').valueOf()">
+                            Required min 6 characters
+                        </mat-error>
+                </mat-form-field>
+
+                <div class="form-field">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button mat-flat-button
+                                    type="submit"
+                                    color="primary"
+                                    class="auth-submit-btn"
+                                    [disabled]="form.invalid || form.disabled"
+                            >Sign In
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button mat-stroked-button
+                                    type="button"
+                                    color="primary"
+                                    class="auth-submit-btn"
+                                    [routerLink]="'/products'"
+                                    [replaceUrl]="true"
+                            >Login as guest
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field pb-0 mt-3">
+                    <p class="text-center mb-0">Don't have an account? Please visit a <a [routerLink]="'/register'">Registration page</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

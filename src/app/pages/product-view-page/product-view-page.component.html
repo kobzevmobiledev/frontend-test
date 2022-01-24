@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <!-- BACK BUTTON -->
+            <button mat-button (click)="navBack()" class="back-button">
+                <mat-icon aria-hidden="false" aria-label="Navigate back" (click)="navBack()">keyboard_arrow_left</mat-icon>
+                Back
+            </button>
+
+            <!-- PRODUCT IMAGE -->
+            <mat-card class="image-card">
+                <img mat-card-image src="{{product.img.indexOf('http') != -1 ? product.img : 'https://via.placeholder.com/350'}}"
+                     alt="{{product.title}}">
+            </mat-card>
+
+        </div>
+        <div class="col-md-6">
+
+
+            <!-- PRODUCT INFO SECTION -->
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-content class="product-info">
+                <p> {{product.text}} </p>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+
+            <!-- PRODUCT RATINGS SECTION -->
+            <mat-card-content>
+
+                <ng-container *ngIf="authService.isAuth()">
+                    <button mat-icon-button  color="warn" *ngFor="let rate of ratingArr" (click)="setRate(rate.id+1)">
+                        <mat-icon
+                                class="rate-icon"
+                                aria-hidden="false"
+                                [matTooltip]="(rate.id+1).toString()" matTooltipPosition="above"
+                        >{{rate.active ? 'star' : 'star_border'}}</mat-icon>
+                    </button>
+                </ng-container>
+
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="authService.isAuth()">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Enter comment</mat-label>
+                        <textarea matInput formControlName="text"></textarea>
+                        <mat-error *ngIf="form.controls['text'].hasError('required')">
+                            Comment field is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+                </form>
+
+                <div class="reviews-list">
+                    <mat-card-title>Reviews</mat-card-title>
+
+                    <ng-container *ngFor="let review of reviews">
+                        <div class="review-list-item">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="review-meta">
+                                        <small>{{review.created_at | date}}</small>
+                                        <h3>
+                                            <div>{{review.created_by.username}}</div>
+                                            <div>{{review.created_by.email}}</div>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="review-rate">
+                                         <mat-icon class="rate-icon" aria-hidden="false" *ngFor="let star of review.stars" >{{star.active ? 'star' : 'star_border'}}</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <mat-divider></mat-divider>
+                    </ng-container>
+                </div>
+
+            </mat-card-content>
+
+        </div>
+    </div>
+</div>
